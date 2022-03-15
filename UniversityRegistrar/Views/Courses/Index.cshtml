@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
+@model List<UniversityRegistrar.Models.Course>;
+
+<h2>Courses:</h2>
+<hr />
+
+@if (@Model.Count == 0)
+{
+  <h3>No Courses Added</h3>
+  <hr />
+}
+
+@foreach(Course course in Model)
+{
+  <h5>@Html.ActionLink($"{course.CourseName}", "Details", new { id = course.CourseId })</h5>
+  <hr />
+}
+
+<h4>@Html.ActionLink("Add New Course", "Create")</h4>
+<h4>@Html.ActionLink("Home", "Index", "Home")</h4>

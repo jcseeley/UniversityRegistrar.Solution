@@ -7,35 +7,32 @@ using UniversityRegistrar.Models;
 
 namespace UniversityRegistrar.Controllers
 {
-  public class CoursesController : Controller
+  public class DepartmentsController : Controller
   {
     private readonly UniversityRegistrarContext _db;
     
-    public CoursesController(UniversityRegistrarContext db)
+    public DepartmentsController(UniversityRegistrarContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
-      ViewBag.PageTitle = "Course";
-      var orderedList = _db.Courses.OrderBy(course => course.DepartmentId);
-      return View(orderedList.ToList());
+      List<Department> model = _db.Departments.ToList();
+      return View(model);
     }
 
     public ActionResult Create()
     {
-      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
-      ViewBag.PageTitle = "Add Course";
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Course course)
+    public ActionResult Create(Department department)
     {
-      _db.Courses.Add(course);
+      _db.Departments.Add(department);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-  }
+  }  
 }

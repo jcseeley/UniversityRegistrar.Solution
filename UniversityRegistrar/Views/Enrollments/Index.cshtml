@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@using UniversityRegistrar.Models;
+@model List<UniversityRegistrar.Models.Enrollment>;
+
+<h2>Enrollments:</h2>
+<hr />
+
+@if (@Model.Count == 0)
+{
+  <h3>No Enrollments Added</h3>
+  <hr />
+}
+
+@foreach(Enrollment enrollment in Model)
+{
+  <h5>@Html.Label($"{enrollment.Student.StudentName} - {enrollment.Course.CourseName} - Complete: {enrollment.Complete}")</h5>
+  <hr />
+}
+
+<h4>@Html.ActionLink("Add New Enrollment", "Create")</h4>
+<h4>@Html.ActionLink("Home", "Index", "Home")</h4>

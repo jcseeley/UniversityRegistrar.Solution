@@ -11,6 +11,8 @@
   @Html.TextBoxFor(model => model.StudentName)<br>
   @Html.Label("Enrollment Date: ")
   @Html.Editor("EnrollmentDate")<br>
+  @Html.Label("Select Department")
+  @Html.DropDownList("DepartmentId")<br>
   <input type="submit" value="Add Student" />
 }
 

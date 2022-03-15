@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Enrollment
+
+<h4>Add Enrollment</h4>
+@using (Html.BeginForm())
+{
+  @Html.Label("Select Student")
+  @Html.DropDownList("StudentId")<br>
+  @Html.Label("Select Courses")
+  @Html.DropDownList("CourseId")
+
+  @* <ul>
+  @foreach (var course in ViewBag.Courses)
+  {
+    
+    @Html.Display(course.CourseName)
+  } *@
+  <input type="submit" value="Add Enrollment" />
+  
+}
+<p>@Html.ActionLink("Show All Departments", "Index")</p>
